@@ -22,7 +22,7 @@
 		<div id="testBox" class="box"></div>
 		<div class="controls" style="display: flex; flex-direction: column;">
 			<label>
-				<input type="range" min="0" max="360" id="rangeAngel"> Угол <span class="code">--gradient-angle</span>
+				<input type="range" value="90" min="0" max="360" id="rangeAngel"> Угол <span class="code">--gradient-angle</span>
 			</label>
 			<label>
 				<input type="color" id="firstColor"> Первый цвет <span class="code">--gradient-start</span>
@@ -31,12 +31,15 @@
 				<input type="color" id="secondColor"> Второй цвет <span class="code">--gradient-end</span>
 			</label>
 			<label>
-				<input type="range" name="" min="1" max="50" id="rangeSize"> Размер пикселей <span
+				<input type="range" value="10" min="1" max="50" id="rangeSize"> Размер пикселей <span
 					class="code">--square-size</span>
 			</label>
 			<label>
-				<input type="range" min="1" max="30" id="rangeNoice"> Сила шума <span
+				<input type="range" min="0.01" value="20" max="300" id="rangeNoice"> Сила шума <span
 					class="code">--noise-intensity</span>
+			</label>
+			<label>
+				<button id="updateSeed">Сменить сид</button>
 			</label>
 		</div>
 	</div>
@@ -59,18 +62,22 @@
 			color: #e2d3dc;
 		}
 
+		input[type="range"]{
+			width: 20rem;
+		}
+
 		.box {
 			background-image: paint(pixelGradient);
-			--gradient-start: #ff3600;
-			--gradient-end: #7900ff;
-			--gradient-angle: 105;
-			--square-size: 7;
-			--noise-intensity: 21;
+			--gradient-start:var(--gradient-startG, #ff3600);
+			--gradient-end:var(--gradient-endG, #7900ff);
+			--gradient-angle:var(--gradient-angleG, 105);
+			--square-size:var(--square-sizeG, 7);
+			--noise-intensity:var(--noise-intensityG, 21);
+			--seed:var(--seedG, 12345);
 			width: 30rem;
 			height: 30rem;
 			border-radius: 1rem;
 			border: 2px solid #680e0e;
-			--seed: 49;
 		}
 
 		.code {
@@ -81,26 +88,29 @@
 		}
 	</style>
 	<script>
-		let testBox = document.getElementById('testBox');
+		let testBox = document.getElementsByTagName('html')[0]
 		document.getElementById('rangeAngel').addEventListener('input', (ev) => {
 			let angle = ev.target.value
-			testBox.style.setProperty('--gradient-angle', angle)
+			testBox.style.setProperty('--gradient-angleG', angle)
 		})
 		document.getElementById('firstColor').addEventListener('input', (ev) => {
 			let firstColor = ev.target.value
-			testBox.style.setProperty('--gradient-start', firstColor)
+			testBox.style.setProperty('--gradient-startG', firstColor)
 		})
 		document.getElementById('secondColor').addEventListener('input', (ev) => {
 			let secondColor = ev.target.value
-			testBox.style.setProperty('--gradient-end', secondColor)
+			testBox.style.setProperty('--gradient-endG', secondColor)
 		})
 		document.getElementById('rangeSize').addEventListener('input', (ev) => {
 			let rangeSize = ev.target.value
-			testBox.style.setProperty('--square-size', rangeSize)
+			testBox.style.setProperty('--square-sizeG', rangeSize)
 		})
 		document.getElementById('rangeNoice').addEventListener('input', (ev) => {
 			let rangeNoice = ev.target.value
-			testBox.style.setProperty('--noise-intensity', rangeNoice)
+			testBox.style.setProperty('--noise-intensityG', rangeNoice)
+		})
+		document.getElementById('updateSeed').addEventListener('click', (ev) => {
+			testBox.style.setProperty('--seedG', Math.random() * 100000000000000000)
 		})
 	</script>
 </body>
