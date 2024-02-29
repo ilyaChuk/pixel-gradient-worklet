@@ -86,4 +86,4 @@ class GradientSquares {
 	}
 }
 
-registerPaint('gradientSquares', GradientSquares);
+registerPaint('pixelGradient', GradientSquares);
