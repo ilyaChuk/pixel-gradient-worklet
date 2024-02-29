@@ -2,7 +2,7 @@
   "name": "pixel-gradient-worklet",
   "version": "1.0.0",
   "description": "pixel gradient",
-  "main": "index.js",
+  "main": "pixel-gradient-worklet.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
