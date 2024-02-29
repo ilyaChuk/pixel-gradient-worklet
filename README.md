@@ -38,7 +38,7 @@ html.pixelGradient .colorfullBlock{
 	background: paint('pixelGradient');
 }
 ```
-Именно в таком порядке. Снача дефолтные, потом в случае если `<html>` имеет `.pixelGradien`.
+Именно в таком порядке. Снача дефолтные, потом в случае если `<html>` имеет `.pixelGradient`.
 
 ### Параметры
 - Цвета должны быть валидными hex.
