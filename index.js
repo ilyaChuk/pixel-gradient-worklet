@@ -9,7 +9,7 @@ class SeedRandom {
 		return hash - Math.floor(hash);
 	}
 }
-
+ 
 class GradientSquares {
 	static get inputProperties() {
 		return ['--gradient-start', '--gradient-end', '--gradient-angle', '--square-size', '--noise-intensity', '--seed'];
