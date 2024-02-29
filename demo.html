@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Демо pixel-gradient-worklet</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+		rel="stylesheet">
+	<script>
+		CSS.paintWorklet.addModule("index.js")
+	</script>
+</head>
+
+<body>
+	<h1>Демо pixel-gradient-worklet</h1>
+	<h2>Кастом</h2>
+	<p>Попробуйте сами все параметры</p>
+	<div style="display: flex;">
+		<div id="testBox" class="box"></div>
+		<div class="controls" style="display: flex; flex-direction: column;">
+			<label>
+				<input type="range" min="0" max="360" id="rangeAngel"> Угол <span class="code">--gradient-angle</span>
+			</label>
+			<label>
+				<input type="color" id="firstColor"> Первый цвет <span class="code">--gradient-start</span>
+			</label>
+			<label>
+				<input type="color" id="secondColor"> Второй цвет <span class="code">--gradient-end</span>
+			</label>
+			<label>
+				<input type="range" name="" min="1" max="50" id="rangeSize"> Размер пикселей <span
+					class="code">--square-size</span>
+			</label>
+			<label>
+				<input type="range" min="1" max="30" id="rangeNoice"> Сила шума <span
+					class="code">--noise-intensity</span>
+			</label>
+		</div>
+	</div>
+	<h2>Менять размер за правый нижний угол</h2>
+	<p>Подходит для динамических элементов</p>
+	<textarea resizable disabled class="box"></textarea>
+	<style>
+		html,
+		body {
+			margin: 0px;
+			font-family: "Montserrat", sans-serif;
+			font-optical-sizing: auto;
+			font-style: normal;
+			color-scheme: dark;
+		}
+
+		body {
+			padding-bottom: 5rem;
+			background-color: #160f0f;
+			color: #e2d3dc;
+		}
+
+		.box {
+			background-image: paint(gradientSquares);
+			--gradient-start: #ff3600;
+			--gradient-end: #7900ff;
+			--gradient-angle: 105;
+			--square-size: 7;
+			--noise-intensity: 21;
+			--noise-intensity: 15;
+			width: 30rem;
+			height: 30rem;
+			border-radius: 1rem;
+			border: 2px solid #680e0e;
+			--seed: 49;
+		}
+
+		.code {
+			font-family: monospace;
+			background: #ff000029;
+			padding: 0.1rem 0.3rem;
+			border-radius: 0.5rem;
+		}
+	</style>
+	<script>
+		let testBox = document.getElementById('testBox');
+		document.getElementById('rangeAngel').addEventListener('input', (ev) => {
+			let angle = ev.target.value
+			testBox.style.setProperty('--gradient-angle', angle)
+		})
+		document.getElementById('firstColor').addEventListener('input', (ev) => {
+			let firstColor = ev.target.value
+			testBox.style.setProperty('--gradient-start', firstColor)
+		})
+		document.getElementById('secondColor').addEventListener('input', (ev) => {
+			let secondColor = ev.target.value
+			testBox.style.setProperty('--gradient-end', secondColor)
+		})
+		document.getElementById('rangeSize').addEventListener('input', (ev) => {
+			let rangeSize = ev.target.value
+			testBox.style.setProperty('--square-size', rangeSize)
+		})
+		document.getElementById('rangeNoice').addEventListener('input', (ev) => {
+			let rangeNoice = ev.target.value
+			testBox.style.setProperty('--noise-intensity', rangeNoice)
+		})
+	</script>
+</body>
+
+</html>

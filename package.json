@@ -1,0 +1,26 @@
+{
+  "name": "pixel-gradient-worklet",
+  "version": "1.0.0",
+  "description": "pixel gradient",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilyaChuk/pixel-gradient-worklet.git"
+  },
+  "keywords": [
+    "js",
+    "css",
+    "paint",
+    "worklet",
+    "gradient"
+  ],
+  "author": "ilyaChuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ilyaChuk/pixel-gradient-worklet/issues"
+  },
+  "homepage": "https://github.com/ilyaChuk/pixel-gradient-worklet#readme"
+}
